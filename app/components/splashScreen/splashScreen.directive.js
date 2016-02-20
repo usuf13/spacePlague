@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.splashScreen', [])
-    .directive('splashScreen', [function() {
+    .directive('splashScreen', function() {
         return {
             restrict: 'E',
             templateUrl: '../app/components/splashScreen/splashScreen.html',
@@ -42,4 +42,4 @@ angular.module('myApp.splashScreen', [])
                 setInterval(draw, 33);
             }
         }
-    }]);
+    });
