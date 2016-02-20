@@ -13,7 +13,7 @@
             height = width;
 
         var canvas = document.createElement('canvas');
-        canvas.setAttribute("name", id);
+        canvas.setAttribute("id", id);
         canvas.setAttribute("width", width);
         canvas.setAttribute("height", height);
         //canvas.setAttribute("class", "tile");

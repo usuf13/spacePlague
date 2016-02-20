@@ -12,7 +12,7 @@ angular.module('myApp.matrix', [])
                 angular.element(document).ready(function () {
                     var matrix_size = $scope.size;
 
-                    var buildItem = function(j, i, el){
+                    var buildItem = function (j, i, el) {
                         $(document.createElement("div"))
                             .addClass("cellWrapper")
                             .css("left", parseInt((j - 1) * 70, 10) + "px")
@@ -31,7 +31,7 @@ angular.module('myApp.matrix', [])
                             .html(el)
                             .appendTo("#grid");
                     };
-
+                    var rand = null;
                     $scope.createGrid = function () {
                         var grid_matrix = $("#grid");
                         grid_matrix.html("");
@@ -50,9 +50,13 @@ angular.module('myApp.matrix', [])
                                 var el = tile.createTile();
                                 titleArray.push(el);
 
-                                buildItem(j,i, el);
+                                buildItem(j, i, el);
                             }
                         }
+
+                        rand = titleArray[Math.floor(Math.random() * titleArray.length)];
+
+                        buildItem(startEmpty + 1, startEmpty + 1, tile.copyTile(rand));
 
                         grid_matrix.height(70 * matrix_size);
                         grid_matrix.width(70 * matrix_size);
@@ -61,11 +65,11 @@ angular.module('myApp.matrix', [])
                     function cellClick() {
                         var cell = $(this).next();
 
-                        if (cell.html() == "0") {
-                            cell.html("<b>X</b>");
-                        } else {
-                            cell.html("0");
-                        }
+                        var id = cell[0].getElementsByTagName('canvas')[0].id;
+                        if (id == rand.id)
+                            alert('good')
+                        else
+                            alert('bad')
                     }
 
                     function cellMouseEnter(e) {
