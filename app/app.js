@@ -2,12 +2,12 @@
 
 angular.module('myApp', [
     'ngRoute',
-    'myApp.splashScreen.splashScreen.directive',
+    'myApp.splashScreen',
     'myApp.homeController'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '../app/Home/home.html'
+            templateUrl: 'home/home.html'
         })
         .otherwise({
             redirectTo: '/'

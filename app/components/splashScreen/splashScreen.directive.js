@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.splashScreen.splashScreen.directive', [])
+angular.module('myApp.splashScreen', [])
     .directive('splashScreen', [function() {
         return {
             restrict: 'E',
