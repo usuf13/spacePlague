@@ -25,11 +25,14 @@ angular.module('myApp.matrix', [])
                                     continue;
                                 }
 
+                                var el = tile.createTile();
+                                document.body.appendChild(el);
+
                                 $(document.createElement("div"))
                                     .addClass("cellWrapper")
-                                    .css("left", parseInt((j - 1) * 50, 10) + "px")
-                                    .css("top", parseInt((i - 1) * 50, 10) + "px")
-                                    .width(50).height(50)
+                                    .css("left", parseInt((j - 1) * 70, 10) + "px")
+                                    .css("top", parseInt((i - 1) * 70, 10) + "px")
+                                    .width(70).height(70)
                                     .data("row", i).data("col", j)
                                     .appendTo("#grid")
                                     .on("click", cellClick)
@@ -38,9 +41,9 @@ angular.module('myApp.matrix', [])
 
                                 $(document.createElement("div"))
                                     .addClass("cell cellUnselected")
-                                    .css("left", parseInt((j - 1) * 50, 10) + "px")
-                                    .css("top", parseInt((i - 1) * 50, 10) + "px")
-                                    .text("0")
+                                    .css("left", parseInt((j - 1) * 70, 10) + "px")
+                                    .css("top", parseInt((i - 1) * 70, 10) + "px")
+                                    .html(el)
                                     .appendTo("#grid");
                             }
                         }
@@ -66,10 +69,9 @@ angular.module('myApp.matrix', [])
                         var x = e.data.isMatrix ? Math.ceil((matrix_size * 50) / matrix_size) : 50;
 
                         var div = $(document.createElement("div"))
-                            .addClass("cellCoordinates cellCoordText")
+                            .addClass("cell_coordinates cell_coord_text")
                             .css("left", parseInt((j - 1) * x, 10) + "px")
-                            .css("top", parseInt((i - 1) * x, 10) + "px")
-                            .text(i + ", " + j);
+                            .css("top", parseInt((i - 1) * x, 10) + "px");
 
                         $(this).before(div);
                     }
