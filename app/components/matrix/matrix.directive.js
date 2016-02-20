@@ -16,13 +16,20 @@ angular.module('myApp.matrix', [])
                         var grid_matrix = $("#grid");
                         grid_matrix.html("");
 
+                        var startEmpty = Math.floor(matrix_size / 2);
+                        var endEmpty = startEmpty + 2;
+
                         for (var i = 1; i <= matrix_size; i++) {
                             for (var j = 1; j <= matrix_size; j++) {
+                                if (i >= startEmpty && i <= endEmpty && j >= startEmpty && j <= endEmpty) {
+                                    continue;
+                                }
+
                                 $(document.createElement("div"))
                                     .addClass("cellWrapper")
-                                    .css("left", parseInt((j - 1) * 36, 10) + "px")
-                                    .css("top", parseInt((i - 1) * 36, 10) + "px")
-                                    .width(36).height(36)
+                                    .css("left", parseInt((j - 1) * 50, 10) + "px")
+                                    .css("top", parseInt((i - 1) * 50, 10) + "px")
+                                    .width(50).height(50)
                                     .data("row", i).data("col", j)
                                     .appendTo("#grid")
                                     .on("click", cellClick)
@@ -31,24 +38,24 @@ angular.module('myApp.matrix', [])
 
                                 $(document.createElement("div"))
                                     .addClass("cell cellUnselected")
-                                    .css("left", parseInt((j - 1) * 36, 10) + "px")
-                                    .css("top", parseInt((i - 1) * 36, 10) + "px")
+                                    .css("left", parseInt((j - 1) * 50, 10) + "px")
+                                    .css("top", parseInt((i - 1) * 50, 10) + "px")
                                     .text("0")
                                     .appendTo("#grid");
                             }
                         }
 
-                        grid_matrix.height(36 * matrix_size);
-                        grid_matrix.width(36 * matrix_size);
+                        grid_matrix.height(50 * matrix_size);
+                        grid_matrix.width(50 * matrix_size);
                     };
 
                     function cellClick() {
                         var cell = $(this).next();
 
-                        if (cell.text() == "0") {
-                            cell.text("1");
+                        if (cell.html() == "0") {
+                            cell.html("<b>X</b>");
                         } else {
-                            cell.text("0");
+                            cell.html("0");
                         }
                     }
 
@@ -56,7 +63,7 @@ angular.module('myApp.matrix', [])
                         var i = $(this).data("row");
                         var j = $(this).data("col");
 
-                        var x = e.data.isMatrix ? Math.ceil((matrix_size * 36) / matrix_size) : 36;
+                        var x = e.data.isMatrix ? Math.ceil((matrix_size * 50) / matrix_size) : 50;
 
                         var div = $(document.createElement("div"))
                             .addClass("cellCoordinates cellCoordText")
