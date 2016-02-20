@@ -16,9 +16,9 @@
         canvas.setAttribute("id", id);
         canvas.setAttribute("width", width);
         canvas.setAttribute("height", height);
-        //canvas.setAttribute("class", "tile");
+        canvas.setAttribute("class", "tile tileRotate ");
 
-        canvas.setAttribute("style", "border: 3px solid #A0A0A4; border-radius: 7px;");
+        //canvas.setAttribute("style", "border: 3px solid #A0A0A4; border-radius: 7px;");
 
         var ctx = canvas.getContext('2d');
         ctx.strokeStyle = "#A0A0A4";
@@ -29,8 +29,6 @@
             for (var x = 0; x < coordinates.length; x++) {
                 var point = { x: coordinates[x], y: coordinates[y] };
                 points.push(point);
-
-                //fillPoint(ctx, point, 'white');
             }
         }
 
@@ -46,7 +44,7 @@
 
             var point = points[randomIndex];
 
-            var retries = 5;
+            var retries = 10;
             while (usedPoints.indexOf(point) > -1 && retries > 0) {
                 point = points[randomIndex];
                 retries--;
@@ -97,6 +95,7 @@
         canvas.setAttribute("id", sourceCanvas.getAttribute('id'));
         canvas.setAttribute("width", sourceCanvas.getAttribute('width'));
         canvas.setAttribute("height", sourceCanvas.getAttribute('height'));
+        canvas.setAttribute("class", sourceCanvas.getAttribute('class'));
         canvas.setAttribute("style", sourceCanvas.getAttribute('style'));
 
         var destCtx = canvas.getContext('2d');
