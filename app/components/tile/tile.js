@@ -19,7 +19,7 @@
         canvas.setAttribute("class", "tile");
 
 
-        ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext('2d');
         ctx.strokeStyle = "#A0A0A4";
         
 
