@@ -16,12 +16,12 @@
         canvas.setAttribute("name", id);
         canvas.setAttribute("width", width);
         canvas.setAttribute("height", height);
-        canvas.setAttribute("class", "tile");
+        //canvas.setAttribute("class", "tile");
 
+        canvas.setAttribute("style", "border: 3px solid #A0A0A4; border-radius: 7px;");
 
         var ctx = canvas.getContext('2d');
         ctx.strokeStyle = "#A0A0A4";
-        
 
         var points = [];
         var coordinates = [padding, width / 2 - radius / 2, width - padding - radius / 2];
@@ -91,5 +91,17 @@
         function getRandomNumber(min, max) {
             return (Math.random() * (max - min) + min).toFixed(0);
         }
+    },
+    copyTile: function (sourceCanvas) {
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute("id", sourceCanvas.getAttribute('id'));
+        canvas.setAttribute("width", sourceCanvas.getAttribute('width'));
+        canvas.setAttribute("height", sourceCanvas.getAttribute('height'));
+        canvas.setAttribute("style", sourceCanvas.getAttribute('style'));
+
+        var destCtx = canvas.getContext('2d');
+        destCtx.drawImage(sourceCanvas, 0, 0);
+
+        return canvas;
     }
 }
