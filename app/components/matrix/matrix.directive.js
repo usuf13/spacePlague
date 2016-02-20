@@ -12,12 +12,34 @@ angular.module('myApp.matrix', [])
                 angular.element(document).ready(function () {
                     var matrix_size = $scope.size;
 
+                    var buildItem = function(j, i, el){
+                        $(document.createElement("div"))
+                            .addClass("cellWrapper")
+                            .css("left", parseInt((j - 1) * 70, 10) + "px")
+                            .css("top", parseInt((i - 1) * 70, 10) + "px")
+                            .width(70).height(70)
+                            .data("row", i).data("col", j)
+                            .appendTo("#grid")
+                            .on("click", cellClick)
+                            .on("mouseenter", {isMatrix: false}, cellMouseEnter)
+                            .on("mouseleave", cellMouseLeave);
+
+                        $(document.createElement("div"))
+                            .addClass("cell cellUnselected")
+                            .css("left", parseInt((j - 1) * 70, 10) + "px")
+                            .css("top", parseInt((i - 1) * 70, 10) + "px")
+                            .html(el)
+                            .appendTo("#grid");
+                    };
+
                     $scope.createGrid = function () {
                         var grid_matrix = $("#grid");
                         grid_matrix.html("");
 
                         var startEmpty = Math.floor(matrix_size / 2);
                         var endEmpty = startEmpty + 2;
+
+                        var titleArray = [];
 
                         for (var i = 1; i <= matrix_size; i++) {
                             for (var j = 1; j <= matrix_size; j++) {
@@ -26,30 +48,14 @@ angular.module('myApp.matrix', [])
                                 }
 
                                 var el = tile.createTile();
-                                document.body.appendChild(el);
+                                titleArray.push(el);
 
-                                $(document.createElement("div"))
-                                    .addClass("cellWrapper")
-                                    .css("left", parseInt((j - 1) * 70, 10) + "px")
-                                    .css("top", parseInt((i - 1) * 70, 10) + "px")
-                                    .width(70).height(70)
-                                    .data("row", i).data("col", j)
-                                    .appendTo("#grid")
-                                    .on("click", cellClick)
-                                    .on("mouseenter", {isMatrix: false}, cellMouseEnter)
-                                    .on("mouseleave", cellMouseLeave);
-
-                                $(document.createElement("div"))
-                                    .addClass("cell cellUnselected")
-                                    .css("left", parseInt((j - 1) * 70, 10) + "px")
-                                    .css("top", parseInt((i - 1) * 70, 10) + "px")
-                                    .html(el)
-                                    .appendTo("#grid");
+                                buildItem(j,i, el);
                             }
                         }
 
-                        grid_matrix.height(50 * matrix_size);
-                        grid_matrix.width(50 * matrix_size);
+                        grid_matrix.height(70 * matrix_size);
+                        grid_matrix.width(70 * matrix_size);
                     };
 
                     function cellClick() {
