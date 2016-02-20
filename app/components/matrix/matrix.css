@@ -1,26 +1,22 @@
 @charset "UTF-8";
-/* CSS Document */
 
-.texthotpink { color: #CC6699 }
-.textpink { color: #FFCCCC }
-.textblue { color: #0099CC }
-.textteal { color: #588485 }
+.text_hot_pink { color: #CC6699 }
+.text_pink { color: #FFCCCC }
+.text_blue { color: #0099CC }
+.text_teal { color: #588485 }
 
-.gridLayout {
+.grid_layout {
     position: absolute;
-    /*	height: 100%; */
 }
 
-.autocorrMatrixContainer {
+.auto_corr_matrix_container {
     position: absolute;
-    /*    float: left; */
-    /*    bottom: 0px; */
     display: block;
     background: none;
     font-family: Arial, Helvetica, Verdana, sans-serif;
 }
 
-.autocorrMatrixCell {
+.auto_corr_matrix_cell {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -33,10 +29,9 @@
     display: table-cell;
     vertical-align: middle;
     line-height: 2em;
-    /*	padding-top: 0.25em; */
 }
 
-.autocorrMatrixCellWrapper {
+.auto_corr_matrix_cellWrapper {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -48,7 +43,7 @@
     font-size: x-small;
 }
 
-.autocorrMatrixCellCoordText {
+.auto_corr_matrix_cell_coord_text {
     font-size: xx-small;
     font-weight: normal;
     font-style: normal;
@@ -59,25 +54,23 @@
     vertical-align: top;
 }
 
-.autocorrMatrixCellValid {
+.auto_corr_matrix_cellValid {
     background: #00FF00;
 }
 
-.autocorrMatrixCellInvalid {
+.auto_corr_matrix_cellInvalid {
     background: #FF4400;
 }
 
-.autocorrMatrixCellSelected {
+.auto_corr_matrix_cellSelected {
     background: none;
 }
 
-.autocorrMatrixCellUnselected {
+.auto_corr_matrix_cellUnselected {
     background: none;
 }
 
 .gridContainer {
-    /*	width: inherit; */
-    /*	float: left; */
     position: relative;
     top: 10px;
     padding: 0 0 0 0;
@@ -92,9 +85,6 @@
     position: absolute;
     z-index: 0;
 
-    /*
-        font-size: 16pt;
-    */
     font-size: x-large;
     font-weight: normal;
     font-style: normal;
@@ -103,7 +93,6 @@
     display: table-cell;
     vertical-align: middle;
     line-height: 2em;
-    /*	padding-top: 0.25em; */
 }
 
 .cellSelected {

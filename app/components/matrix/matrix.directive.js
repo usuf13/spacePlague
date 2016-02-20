@@ -66,7 +66,7 @@ angular.module('myApp.matrix', [])
                         var x = e.data.isMatrix ? Math.ceil((matrix_size * 50) / matrix_size) : 50;
 
                         var div = $(document.createElement("div"))
-                            .addClass("cellCoordinates cellCoordText")
+                            .addClass("cell_coordinates cell_coord_text")
                             .css("left", parseInt((j - 1) * x, 10) + "px")
                             .css("top", parseInt((i - 1) * x, 10) + "px")
                             .text(i + ", " + j);
