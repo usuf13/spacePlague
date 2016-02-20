@@ -28,6 +28,10 @@ angular.module('myApp.splashScreen', [])
 
                     ctx.fillStyle = "#0F0";
                     ctx.font = font_size + "px arial";
+
+                    ctx.textAlign = "center";
+                    ctx.fillText("Space Plague",c.width/2, c.height/3);
+
                     for (var i = 0; i < drops.length; i++) {
                         var text = chinese[Math.floor(Math.random() * chinese.length)];
                         ctx.fillText(text, i * font_size, drops[i] * font_size);
