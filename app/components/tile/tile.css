@@ -1,12 +1,13 @@
 ﻿.tile {
     border: 3px solid #A0A0A4;
     border-radius: 7px;
+    position:relative;
 }
 
 .tileChangeBackground {
     background-color: green;
-    -webkit-animation: background 5s infinite linear;
-    -moz-animation: background 5s infinite linear;
+    -webkit-animation: background 3s infinite linear;
+    -moz-animation: background 3s infinite linear;
 }
 @-webkit-keyframes background {
     from { -webkit-filter: hue-rotate(0deg); }    
@@ -23,15 +24,29 @@
 }
 @-webkit-keyframes resize
 {
-   from {left: 0px;   -webkit-transform: scale(1.0) }
-   to   {left: 500px; -webkit-transform: scale(0.7) }
+   from {-webkit-transform: scale(1.0) }
+   to   {-webkit-transform: scale(0.7) }
 }
 @-moz-keyframes resize
 {
-   from {left: 0px;   -moz-transform: scale(1.0) }
-   to   {left: 500px; -moz-transform: scale(0.7) }
+   from {-moz-transform: scale(1.0) }
+   to   {-moz-transform: scale(0.7) }
 }
 
+.tileMove {
+    -webkit-animation: move ease-in-out 3s infinite alternate;
+    -moz-animation: move ease-in-out 3s infinite alternate;
+}
+@-webkit-keyframes move
+{
+   from {left: 0px; top:0px; -webkit-transition: 1s; }
+   to   {left: 50px; top:50px; -webkit-transition: 1s; }
+}
+@-moz-keyframes move
+{
+   from {left: 0px; -webkit-transition: 1s; }
+   to   {left: 500px; -webkit-transition: 1s; }
+}
 
 .tileRotate {
     -webkit-animation: rotate ease-in-out 3s infinite alternate; 
@@ -39,13 +54,13 @@
 }
 @-webkit-keyframes rotate
 {
-   from {left: 0px;   -webkit-transform: scale(1.0) rotate(0deg)   }
-   50%  {left: 250px; -webkit-transform: scale(0.7) rotate(10deg)  }
-   to   {left: 500px; -webkit-transform: scale(1.0) rotate(-20deg) }
+   from {-webkit-transform: scale(1.0) rotate(0deg)   }
+   50%  {-webkit-transform: scale(0.7) rotate(10deg)  }
+   to   {-webkit-transform: scale(1.0) rotate(-20deg) }
 }
 @-moz-keyframes rotate
 {
-   from {left: 0px;   -moz-transform: scale(1.0) rotate(0deg)   }
-   50%  {left: 250px; -moz-transform: scale(0.7) rotate(10deg)  }
-   to   {left: 500px; -moz-transform: scale(1.0) rotate(-20deg) }
+   from {-moz-transform: scale(1.0) rotate(0deg)   }
+   50%  {-moz-transform: scale(0.7) rotate(10deg)  }
+   to   {-moz-transform: scale(1.0) rotate(-20deg) }
 }

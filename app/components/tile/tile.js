@@ -16,7 +16,7 @@
         canvas.setAttribute("id", id);
         canvas.setAttribute("width", width);
         canvas.setAttribute("height", height);
-        canvas.setAttribute("class", "tile tileRotate ");
+        canvas.setAttribute("class", "tile");
 
         //canvas.setAttribute("style", "border: 3px solid #A0A0A4; border-radius: 7px;");
 
@@ -38,8 +38,7 @@
         var countPoints = getRandomNumber(5, 7);
         ctx.beginPath();
         ctx.lineWidth = 3;
-        for (var index = 0; index < countPoints; index ++)
-        {
+        for (var index = 0; index < countPoints; index++) {
             var randomIndex = getRandomNumber(0, points.length - 1);
 
             var point = points[randomIndex];
@@ -75,13 +74,12 @@
 
 
         //private functions
-        function fillPoint (ctx, point, color)
-        {
+        function fillPoint(ctx, point, color) {
             ctx.beginPath();
             ctx.arc(point.x, point.y, radius, 0, Math.PI * 2, true);
             ctx.fillStyle = color;
             ctx.fill();
-            
+
             ctx.stroke();
             ctx.closePath();
         }
@@ -102,5 +100,25 @@
         destCtx.drawImage(sourceCanvas, 0, 0);
 
         return canvas;
+    },
+    setDefaulState: function (sourceCanvas) {
+        sourceCanvas.setAttribute("class", "tile");
+        sourceCanvas.setAttribute("style", "");
+    },
+    onChangeColor: function (sourceCanvas) {
+        sourceCanvas.setAttribute("style", " background-color:#" + ((1 << 24) * Math.random() | 0).toString(16));
+        sourceCanvas.setAttribute("class", "tile tileChangeBackground");
+    },
+    onChangeSize: function (sourceCanvas) {
+        sourceCanvas.setAttribute("class", "tile");
+        sourceCanvas.setAttribute("class", "tile tileChangeSize");
+    },
+    onRotate: function (sourceCanvas) {
+        sourceCanvas.setAttribute("class", "tile");
+        sourceCanvas.setAttribute("class", "tile tileRotate");
+    },
+    onMove: function (sourceCanvas) {
+        sourceCanvas.setAttribute("class", "tile");
+        sourceCanvas.setAttribute("class", "tile tileMove");
     }
 }

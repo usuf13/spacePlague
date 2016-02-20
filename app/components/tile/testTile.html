@@ -1,0 +1,51 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="tile.css">
+    <script src="tile.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        window.onload = function () {
+            var div = document.getElementById("body");
+
+            for (var i = 0; i < 16; i++)
+            {
+                var el = tile.createTile();
+                div.appendChild(el);
+            }
+        }
+
+        function changeLevel(level)
+        {
+            var canvasArr = document.getElementsByTagName("canvas");
+
+            for (var index = 0; index < canvasArr.length; index++){
+                var canvas = canvasArr[index];
+
+                if (level == 1)
+                    tile.setDefaulState(canvas);
+                else if (level == 2)
+                    tile.onChangeColor(canvas);
+                else if (level == 3)
+                    tile.onChangeSize(canvas);
+                else if (level == 4)
+                    tile.onMove(canvas);
+                else if (level == 5)
+                    tile.onRotate(canvas);
+            }
+        }
+    </script>
+    <div style="padding: 20px">
+        <input type="button" value="Level1" onclick="changeLevel(1)" />
+        <input type="button" value="Level2" onclick="changeLevel(2)" />
+        <input type="button" value="Level3" onclick="changeLevel(3)" />
+        <input type="button" value="Level4" onclick="changeLevel(4)" />
+        <input type="button" value="Level5" onclick="changeLevel(5)" />
+    </div>
+    <div id="body" style="width: 280px" />
+    
+</body>
+</html>
