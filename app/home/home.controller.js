@@ -36,8 +36,14 @@ angular.module('myApp.homeController', [])
                  $scope.foundTiles++;
                  checkState();
              }
-             else if ($scope.foundTiles <= 0)
+             else if ($scope.foundTiles >= 0)
                  $scope.foundTiles--;
+
+             var fillPercent = ($scope.foundTiles * 100 / $scope.config.tilesCount) + '%';
+             if (fillPercent > 100)
+                 fillPercent = 100;
+
+             document.getElementById('dna').style.height = fillPercent;
 
             $rootScope.createGrid($scope.currentSize, 64, $scope.currentLevel);
          }
@@ -69,5 +75,7 @@ angular.module('myApp.homeController', [])
                      alert("Win");
                      break;
              }
+
+            
          }
     });
