@@ -5,7 +5,6 @@ angular.module('myApp', [
     'myApp.splashScreen',
     'myApp.sideBar',
     'myApp.historyMenu',
-    'myApp.footer',
     'myApp.header',
     'myApp.mainPlace',
     'myApp.homeController'
