@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+
+body {
+    font: 16px/20px 'Cutive Mono', serif;
+}
+
+a {
+    color: #00c91d;
+}
+
+.wrap {
+    width: 500px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.test {
+    margin-top: 10px;
+    text-align: left;
+    font-size: x-large;
+    color: #59d70c;
+}

@@ -5,6 +5,7 @@ angular.module('myApp', [
     'myApp.splashScreen',
     'myApp.matrix',
     'myApp.sideBar',
+    'myApp.historyMenu',
     'myApp.homeController'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider
