@@ -4,13 +4,15 @@ angular.module('myApp.mainPlace', [])
     .directive('mainPlace', function () {
         return {
             restrict: 'E',
+            scope: {
+                size: '=size'
+            },
             templateUrl: '../app/components/mainPlace/mainPlace.html',
-            controller: function ($scope) {
-                createGrid(11, 64);
+            controller: function ($scope, $rootScope) {
+                createGrid(64);
 
-               // $scope.centerTile = null;
-
-                function createGrid(gridSize, tileSize) {
+                function createGrid(tileSize) {
+                    var gridSize = $scope.size;
                     var div = document.getElementById("body");
 
                     while (div.hasChildNodes()) {
@@ -50,24 +52,15 @@ angular.module('myApp.mainPlace', [])
 
                             var _tile = tile.createTile(1, tileSize, tileSize);
                             tiles.push(_tile);
-                            _tile.onclick = tileClick;
+                            _tile.onclick = $rootScope.tileClick;
                             column.appendChild(_tile);
                         }
                     }
 
-                    $scope.centerTile = tiles[Math.floor(Math.random() * tiles.length)];
-                    $scope.centerTile = tile.copyTile($scope.centerTile);
+                    $rootScope.centerTile = tiles[Math.floor(Math.random() * tiles.length)];
+                    $rootScope.centerTile = tile.copyTile($rootScope.centerTile);
 
-                    centerCell.appendChild($scope.centerTile);
-                }
-
-                function tileClick() {
-                    if ($scope.centerTile.id == this.id)
-                        alert("Won");
-                    else
-                        alert("Lost");
-
-                    createGrid(9, 64);
+                    centerCell.appendChild($rootScope.centerTile);
                 }
 
                 function changeLevel(level) {
