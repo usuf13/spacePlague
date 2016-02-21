@@ -15,7 +15,7 @@
 }
 @-moz-keyframes background {
     from { -moz-filter: hue-rotate(0deg); }    
-    to   { -moz-filter: hue-rotate(360deg); }
+    to   { -moz-filter: hue-rotate(360deg); filter: hue-rotate(-360deg);}
 }
 
 .tileChangeSize {
@@ -34,23 +34,56 @@
 }
 
 .tileMove {
-    -webkit-animation: move ease-in-out 3s infinite alternate;
-    -moz-animation: move ease-in-out 3s infinite alternate;
+    -webkit-animation: move ease-in-out 0.5s infinite alternate;
+    -moz-animation: move ease-in-out 0.5s infinite alternate;
 }
 @-webkit-keyframes move
 {
-   from {left: 0px; top:0px; -webkit-transition: 1s; }
-   to   {left: 50px; top:50px; -webkit-transition: 1s; }
+   /*from {left: 0px; top:0px; -webkit-transition: 1s; }*/
+   to   {left: 10px; top:10px; -webkit-transition: 1s; }
 }
-@-moz-keyframes move
+@-moz-keyframes move {
+    /*from {left: 0px; -webkit-transition: 1s; }*/
+    to {
+        left: 10px;
+        top: 10px;
+        -webkit-transition: 1s;
+    }
+}
+
+.tileMoveVertical {
+    -webkit-animation: moveVerical ease-in-out 1s infinite alternate;
+    -moz-animation: moveVerical ease-in-out 1s infinite alternate;
+}
+@-webkit-keyframes moveVerical
 {
-   from {left: 0px; -webkit-transition: 1s; }
-   to   {left: 500px; -webkit-transition: 1s; }
+   /*from {left: 0px; top:0px; -webkit-transition: 1s; }*/
+   to   { top:10px; -webkit-transition: 1s; }
+}
+@-moz-keyframes moveVerical
+{
+   /*from {left: 0px; -webkit-transition: 1s; }*/
+   to   {top:10px; -webkit-transition: 1s; }
+}
+
+.tileMoveHorizontal {
+    -webkit-animation: moveHorizontal ease-in-out 0.5s infinite alternate;
+    -moz-animation: moveHorizontal ease-in-out 3s infinite alternate;
+}
+@-webkit-keyframes moveHorizontal
+{
+   /*from {left: 0px; top:0px; -webkit-transition: 1s; }*/
+   to   {left: 10px; -webkit-transition: 1s; }
+}
+@-moz-keyframes moveHorizontal
+{
+   /*from {left: 0px; -webkit-transition: 1s; }*/
+   to   {left: 10px; -webkit-transition: 1s; }
 }
 
 .tileRotate {
     -webkit-animation: rotate ease-in-out 3s infinite alternate; 
-    -moz-animation: anim2 ease-in-out 3s infinite alternate; 
+    -moz-animation: rotate ease-in-out 3s infinite alternate; 
 }
 @-webkit-keyframes rotate
 {

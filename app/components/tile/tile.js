@@ -110,15 +110,26 @@
         sourceCanvas.setAttribute("class", "tile tileChangeBackground");
     },
     onChangeSize: function (sourceCanvas) {
-        sourceCanvas.setAttribute("class", "tile");
+        sourceCanvas.setAttribute("style", "");
         sourceCanvas.setAttribute("class", "tile tileChangeSize");
     },
     onRotate: function (sourceCanvas) {
-        sourceCanvas.setAttribute("class", "tile");
+        sourceCanvas.setAttribute("style", "");
         sourceCanvas.setAttribute("class", "tile tileRotate");
     },
     onMove: function (sourceCanvas) {
-        sourceCanvas.setAttribute("class", "tile");
+        var max = 10;
+        var min = -10;
+        sourceCanvas.style.left = Math.floor(Math.random() * (max - min + 1)) + min;
+        sourceCanvas.style.top = Math.floor(Math.random() * (max - min + 1)) + min;
+        //sourceCanvas.setAttribute("style", "");
         sourceCanvas.setAttribute("class", "tile tileMove");
+        //if (Math.random() < 0.5)
+        //    sourceCanvas.setAttribute("class", "tile tileMoveHorizontal");
+        //else
+        //    sourceCanvas.setAttribute("class", "tile tileMoveVertical");
+    },
+    setLevel: function (sourceCanvas, level) {
+        
     }
 }
