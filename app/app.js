@@ -3,8 +3,10 @@
 angular.module('myApp', [
     'ngRoute',
     'myApp.splashScreen',
-    'myApp.matrix',
     'myApp.sideBar',
+    'myApp.historyMenu',
+    'myApp.header',
+    'myApp.mainPlace',
     'myApp.homeController'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider
