@@ -4,6 +4,7 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.splashScreen',
     'myApp.matrix',
+    'myApp.sideBar',
     'myApp.homeController'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider

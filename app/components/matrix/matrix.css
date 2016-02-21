@@ -6,7 +6,10 @@
 .text_teal { color: #588485 }
 
 .grid_layout {
-    position: absolute;
+    position: absolute !important;
+    left: 33%;
+    top: 50%;
+    transform: translateY(-70%);
 }
 
 .auto_corr_matrix_container {
