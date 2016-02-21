@@ -21,7 +21,7 @@
                 </div>
                 <div style="display: table-row; height: 100%;">
                     <div style="display:table-cell; text-align: center; vertical-align: middle;">
-                        <div id="body" style="width: 630px; height: 630px; display: inline-block;"> </div>
+                        <div id="body" style="display: inline-block;"> </div>
                     </div>
                 </div>
                 <div style="display: table-row; height: 100px; background-color:green">
@@ -36,16 +36,68 @@
 
     <script type="text/javascript">
         window.onload = function () {
+            createGrid(11, 64);
+        }
+
+        var centerTile = null;
+        function createGrid(gridSize, tileSize) {
             var div = document.getElementById("body");
+            
+            while (div.hasChildNodes()) {
+                div.removeChild(div.lastChild);
+            }
 
-            size = 9;
+            var realTileSize = tileSize + 6; //because one border 3px
 
-            for (var i = 0; i < size; i++) {
-                for (var j = 0; j < size; j++) {
-                    var el = tile.createTile(1);
-                    div.appendChild(el);
+            var firstCenterCell = Math.floor(gridSize / 2);
+            var endCenterCell = firstCenterCell + 2;
+
+            grid = document.createElement('div');
+            grid.className = "container";
+            div.appendChild(grid);
+
+            var centerCell = null;
+            var tiles = [];
+            for (var i = 1; i <= gridSize; i++) {
+                var row = document.createElement('div');
+                row.className = "row";
+
+                grid.appendChild(row);
+                for (var j = 1; j <= gridSize; j++) {
+                    var column = document.createElement('div');
+                    column.className = "column";
+
+                    row.appendChild(column);
+
+                    if (i == firstCenterCell + 1 && j == firstCenterCell + 1) {
+                        centerCell = column;
+                        continue;
+                    }
+                    else if (i >= firstCenterCell && i <= endCenterCell
+                        && j >= firstCenterCell && j <= endCenterCell) {
+                        continue;
+                    }
+
+                    var _tile = tile.createTile(1, tileSize, tileSize);
+                    tiles.push(_tile);
+                    _tile.onclick = tileClick;
+                    column.appendChild(_tile);
                 }
             }
+
+            centerTile = tiles[Math.floor(Math.random() * tiles.length)];
+            centerTile = tile.copyTile(centerTile);
+
+            centerCell.appendChild(centerTile);
+        }
+
+        function tileClick() {
+            if (centerTile.id == this.id)
+                alert("Won");
+            else
+                alert("Lost");
+
+            createGrid(9, 64);
         }
 
         function changeLevel(level) {
