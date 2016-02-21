@@ -7,8 +7,8 @@
 
 .grid_layout {
     position: absolute !important;
-    left: 33%;
-    top: 50%;
+    margin-left: 33%;
+    margin-top: 50%;
     transform: translateY(-70%);
 }
 
@@ -75,7 +75,7 @@
 
 .gridContainer {
     position: relative;
-    top: 10px;
+    margin-top: 10px;
     padding: 0 0 0 0;
     display: block;
     background: none;
@@ -83,8 +83,8 @@
 }
 
 .cell {
-    width: 36px;
-    height: 36px;
+    width: 72px;
+    height: 72px;
     position: absolute;
     z-index: 0;
 
@@ -123,7 +123,7 @@
     border-style: solid outset;
     border-width: 1px;
     border-color: transparent;
-    font-size: normal;
+    font-size: inherit;
 }
 
 .cellCoordText {
