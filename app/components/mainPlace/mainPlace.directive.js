@@ -50,7 +50,7 @@ angular.module('myApp.mainPlace', [])
                                 continue;
                             }
 
-                            var _tile = tile.createTile(1, tileSize, tileSize);
+                            var _tile = tile.createTile(5, tileSize, tileSize);
                             tiles.push(_tile);
                             _tile.onclick = $rootScope.tileClick;
                             column.appendChild(_tile);
