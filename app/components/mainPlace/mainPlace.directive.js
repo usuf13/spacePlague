@@ -5,14 +5,15 @@ angular.module('myApp.mainPlace', [])
         return {
             restrict: 'E',
             scope: {
-                size: '=size'
+                size: '=size',
+                tile2: '=tile2',
+                level: '=level'
             },
             templateUrl: '../app/components/mainPlace/mainPlace.html',
             controller: function ($scope, $rootScope) {
-                createGrid(64);
+                createGrid($scope.size, 64, $scope.level);
 
-                function createGrid(tileSize) {
-                    var gridSize = $scope.size;
+                function createGrid(gridSize, tileSize, level) {
                     var div = document.getElementById("body");
 
                     while (div.hasChildNodes()) {
@@ -50,9 +51,9 @@ angular.module('myApp.mainPlace', [])
                                 continue;
                             }
 
-                            var _tile = tile.createTile(5, tileSize, tileSize);
+                            var _tile = tile.createTile(level, tileSize, tileSize);
                             tiles.push(_tile);
-                            _tile.onclick = $rootScope.tileClick;
+                            _tile.onclick = $scope.tile2;
                             column.appendChild(_tile);
                         }
                     }
@@ -61,6 +62,8 @@ angular.module('myApp.mainPlace', [])
                     $rootScope.centerTile = tile.copyTile($rootScope.centerTile);
 
                     centerCell.appendChild($rootScope.centerTile);
+
+                    $rootScope.createGrid = createGrid;
                 }
 
                 function changeLevel(level) {
@@ -72,6 +75,12 @@ angular.module('myApp.mainPlace', [])
                         tile.setLevel(canvas, level);
                     }
                 }
+
+                $scope.$watch('size', function (newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        createGrid(64);
+                    }
+                });
             }
         }
     });
