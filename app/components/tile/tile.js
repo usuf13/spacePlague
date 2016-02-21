@@ -1,5 +1,5 @@
 ﻿var tile = {
-    createTile: function (id, width, height) {
+    createTile: function (level, width, height, id) {
         var radius = 3;
         var padding = 10;
 
@@ -16,9 +16,7 @@
         canvas.setAttribute("id", id);
         canvas.setAttribute("width", width);
         canvas.setAttribute("height", height);
-        canvas.setAttribute("class", "tile");
-
-        //canvas.setAttribute("style", "border: 3px solid #A0A0A4; border-radius: 7px;");
+        tileLevelEffects(canvas, level);
 
         var ctx = canvas.getContext('2d');
         ctx.strokeStyle = "#A0A0A4";
@@ -101,35 +99,60 @@
 
         return canvas;
     },
-    setDefaulState: function (sourceCanvas) {
-        sourceCanvas.setAttribute("class", "tile");
-        sourceCanvas.setAttribute("style", "");
-    },
-    onChangeColor: function (sourceCanvas) {
-        sourceCanvas.setAttribute("style", " background-color:#" + ((1 << 24) * Math.random() | 0).toString(16));
-        sourceCanvas.setAttribute("class", "tile tileChangeBackground");
-    },
-    onChangeSize: function (sourceCanvas) {
-        sourceCanvas.setAttribute("style", "");
-        sourceCanvas.setAttribute("class", "tile tileChangeSize");
-    },
-    onRotate: function (sourceCanvas) {
-        sourceCanvas.setAttribute("style", "");
-        sourceCanvas.setAttribute("class", "tile tileRotate");
-    },
-    onMove: function (sourceCanvas) {
-        var max = 10;
-        var min = -10;
-        sourceCanvas.style.left = Math.floor(Math.random() * (max - min + 1)) + min;
-        sourceCanvas.style.top = Math.floor(Math.random() * (max - min + 1)) + min;
-        //sourceCanvas.setAttribute("style", "");
-        sourceCanvas.setAttribute("class", "tile tileMove");
-        //if (Math.random() < 0.5)
-        //    sourceCanvas.setAttribute("class", "tile tileMoveHorizontal");
-        //else
-        //    sourceCanvas.setAttribute("class", "tile tileMoveVertical");
-    },
     setLevel: function (sourceCanvas, level) {
-        
+        tileLevelEffects(sourceCanvas, level)
     }
+}
+
+var tileLevelEffects = function (sourceCanvas, level) {
+    var acceptLevels = [1, 2, 3, 4, 5];
+    if (acceptLevels.indexOf(level) == -1)
+        level = 1;
+
+    switch (level) {
+        case 1:
+            sourceCanvas.setAttribute("class", "tile");
+            sourceCanvas.setAttribute("style", "");
+            break;
+        case 2:
+            sourceCanvas.setAttribute("style", "background-color:" + getRandomRgbColor() + ";");
+            sourceCanvas.setAttribute("class", "tile tileLevel2");
+            break;
+        case 3:
+            var style = "background-color:" + getRandomRgbColor() + ";" +
+                "-webkit-animation: level3 ease-in-out " + random(1, 4) + "s infinite alternate;" +
+                "-moz-animation: level3 ease-in-out " + random(1.5, 3) + "s infinite alternate;";
+
+            sourceCanvas.setAttribute("style", style);
+            break;
+        case 4:
+            var style = "background-color:" + getRandomRgbColor() + ";" +
+                "left: " + random(1, 5) + "px;" +
+                "-webkit-animation: level4 ease-in-out " + random(1, 4) + "s infinite alternate;" +
+                "-moz-animation: level4 ease-in-out " + random(1.5, 3) + "s infinite alternate;";
+
+            sourceCanvas.setAttribute("style", style);
+            break;
+        case 5:
+            var level = "level5";
+            if (Math.random() < 0.5)
+                level = "level5Counterclockwise";
+
+            var style = "background-color:" + getRandomRgbColor() + ";" +
+                "left: " + random(1, 5) + "px;" +
+                "-webkit-animation: " + level + " ease-in-out " + random(1, 4) + "s infinite alternate;" +
+                "-moz-animation: " + level + " ease-in-out " + random(1.5, 3) + "s infinite alternate;";
+
+            sourceCanvas.setAttribute("style", style);
+            break;
+    }
+
+    function getRandomRgbColor(){
+        return "rgb(" + random(1, 256) + "," + random(1, 256) + "," + random(1, 256) + ")";
+    }
+
+    function random (max, min){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
 }

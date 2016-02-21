@@ -1,99 +1,174 @@
 ﻿.tile {
     border: 3px solid #A0A0A4;
     border-radius: 7px;
-    position:relative;
+    position: relative;
 }
 
-.tileChangeBackground {
+.tileLevel2 {
     background-color: green;
-    -webkit-animation: background 3s infinite linear;
-    -moz-animation: background 3s infinite linear;
-}
-@-webkit-keyframes background {
-    from { -webkit-filter: hue-rotate(0deg); }    
-    to   { -webkit-filter: hue-rotate(360deg); }
-}
-@-moz-keyframes background {
-    from { -moz-filter: hue-rotate(0deg); }    
-    to   { -moz-filter: hue-rotate(360deg); filter: hue-rotate(-360deg);}
+    -webkit-animation: level2 3s infinite linear;
+    -moz-animation: level2 3s infinite linear;
 }
 
-.tileChangeSize {
-    -webkit-animation: resize ease-in-out 3s infinite alternate;
-    -moz-animation: resize ease-in-out 3s infinite alternate;
-}
-@-webkit-keyframes resize
-{
-   from {-webkit-transform: scale(1.0) }
-   to   {-webkit-transform: scale(0.7) }
-}
-@-moz-keyframes resize
-{
-   from {-moz-transform: scale(1.0) }
-   to   {-moz-transform: scale(0.7) }
-}
+@-webkit-keyframes level2 {
+    from {
+        -webkit-filter: hue-rotate(0deg);
+    }
 
-.tileMove {
-    -webkit-animation: move ease-in-out 0.5s infinite alternate;
-    -moz-animation: move ease-in-out 0.5s infinite alternate;
-}
-@-webkit-keyframes move
-{
-   /*from {left: 0px; top:0px; -webkit-transition: 1s; }*/
-   to   {left: 10px; top:10px; -webkit-transition: 1s; }
-}
-@-moz-keyframes move {
-    /*from {left: 0px; -webkit-transition: 1s; }*/
     to {
-        left: 10px;
-        top: 10px;
-        -webkit-transition: 1s;
+        -webkit-filter: hue-rotate(360deg);
     }
 }
 
-.tileMoveVertical {
-    -webkit-animation: moveVerical ease-in-out 1s infinite alternate;
-    -moz-animation: moveVerical ease-in-out 1s infinite alternate;
-}
-@-webkit-keyframes moveVerical
-{
-   /*from {left: 0px; top:0px; -webkit-transition: 1s; }*/
-   to   { top:10px; -webkit-transition: 1s; }
-}
-@-moz-keyframes moveVerical
-{
-   /*from {left: 0px; -webkit-transition: 1s; }*/
-   to   {top:10px; -webkit-transition: 1s; }
+@-moz-keyframes level2 {
+    from {
+        -moz-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        -moz-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+    }
 }
 
-.tileMoveHorizontal {
-    -webkit-animation: moveHorizontal ease-in-out 0.5s infinite alternate;
-    -moz-animation: moveHorizontal ease-in-out 3s infinite alternate;
-}
-@-webkit-keyframes moveHorizontal
-{
-   /*from {left: 0px; top:0px; -webkit-transition: 1s; }*/
-   to   {left: 10px; -webkit-transition: 1s; }
-}
-@-moz-keyframes moveHorizontal
-{
-   /*from {left: 0px; -webkit-transition: 1s; }*/
-   to   {left: 10px; -webkit-transition: 1s; }
+.tileLevel3 {
+    -webkit-animation: level3 3s infinite linear;
+    -moz-animation: level3 3s infinite linear;
 }
 
-.tileRotate {
-    -webkit-animation: rotate ease-in-out 3s infinite alternate; 
-    -moz-animation: rotate ease-in-out 3s infinite alternate; 
+@-webkit-keyframes level3 {
+    from {
+        -webkit-transform: scale(1.0);
+        -webkit-filter: hue-rotate(0deg);
+    }
+
+    to {
+        -webkit-filter: hue-rotate(360deg);
+        -webkit-transform: scale(0.7);
+    }
 }
-@-webkit-keyframes rotate
-{
-   from {-webkit-transform: scale(1.0) rotate(0deg)   }
-   50%  {-webkit-transform: scale(0.7) rotate(10deg)  }
-   to   {-webkit-transform: scale(1.0) rotate(-20deg) }
+
+@-moz-keyframes level3 {
+    from {
+        -moz-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+        -moz-transform: scale(1.0);
+    }
+
+    to {
+        -moz-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+        -moz-transform: scale(0.7);
+    }
 }
-@-moz-keyframes rotate
-{
-   from {-moz-transform: scale(1.0) rotate(0deg)   }
-   50%  {-moz-transform: scale(0.7) rotate(10deg)  }
-   to   {-moz-transform: scale(1.0) rotate(-20deg) }
+
+.tileLevel4 {
+    -webkit-animation: level4 ease-in-out 0.5s infinite alternate;
+    -moz-animation: level4 ease-in-out 0.5s infinite alternate;
+}
+
+@-webkit-keyframes level4 {
+    from {
+        left: 0;
+        top:0;
+        -webkit-transform: scale(1.0);
+        -webkit-filter: hue-rotate(0deg);
+    }
+
+    to {
+        left: 10px;
+        top:10px;
+        -webkit-filter: hue-rotate(360deg);
+        -webkit-transform: scale(0.7);
+    }
+}
+
+@-moz-keyframes level4 {
+    from {
+        left: 0;
+        top:0;
+        -moz-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+        -moz-transform: scale(1.0);
+    }
+
+    to {
+        left: 10px;
+        top:10px;
+        -moz-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+        -moz-transform: scale(0.7);
+    }
+}
+
+.tileLevel5 {
+    -webkit-animation: level5 ease-in-out 3s infinite alternate;
+    -moz-animation: level5 ease-in-out 3s infinite alternate;
+}
+
+@-webkit-keyframes level5 {
+    from {
+        left: 0;
+        top:0;
+        -webkit-transform: scale(1.0) rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+    }
+    to {
+        left: 10px;
+        top:10px;
+        -webkit-filter: hue-rotate(360deg);
+        -webkit-transform: scale(0.7) rotate(20deg);
+    }
+}
+
+@-webkit-keyframes level5Counterclockwise {
+    from {
+        left: 0;
+        top:0;
+        -webkit-transform: scale(1.0) rotate(0deg);
+        -webkit-filter: hue-rotate(0deg);
+    }
+    to {
+        left: 10px;
+        top:10px;
+        -webkit-filter: hue-rotate(360deg);
+        -webkit-transform: scale(0.7) rotate(-20deg);
+    }
+}
+
+@-moz-keyframes level5 {
+    from {
+        left: 0;
+        top:0;
+        -moz-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+        -moz-transform: scale(1.0) rotate(0deg);
+    }
+
+    to {
+        left: 10px;
+        top:10px;
+        -moz-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+        -moz-transform: scale(0.7) rotate(20deg);
+    }
+}
+
+@-moz-keyframes level5Counterclockwise {
+    from {
+        left: 0;
+        top:0;
+        -moz-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+        -moz-transform: scale(1.0) rotate(0deg);
+    }
+
+    to {
+        left: 10px;
+        top:10px;
+        -moz-filter: hue-rotate(360deg);
+        filter: hue-rotate(360deg);
+        -moz-transform: scale(0.7) rotate(-20deg);
+    }
 }
