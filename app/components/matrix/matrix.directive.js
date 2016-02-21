@@ -50,7 +50,7 @@ angular.module('myApp.matrix', [])
                                     continue;
                                 }
 
-                                var el = tile.createTile();
+                                var el = tile.createTile(5);
                                 titleArray.push(el);
 
                                 buildItem(j, i, el, false);
