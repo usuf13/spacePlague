@@ -14,3 +14,15 @@
     width: 100%;
     height: 100%;
 }
+
+.main_header {
+    display: table-row;
+    height: 50px;
+    background-color: cornflowerblue;
+}
+
+.footer {
+    display: table-row;
+    height: 100px;
+    background-color: green
+}
