@@ -4,13 +4,16 @@ angular.module('myApp.mainPlace', [])
     .directive('mainPlace', function () {
         return {
             restrict: 'E',
+            scope: {
+                size: '=size',
+                tile2: '=tile2',
+                level: '=level'
+            },
             templateUrl: '../app/components/mainPlace/mainPlace.html',
-            controller: function ($scope) {
-                createGrid(11, 64);
+            controller: function ($scope, $rootScope) {
+                createGrid($scope.size, 64, $scope.level);
 
-               // $scope.centerTile = null;
-
-                function createGrid(gridSize, tileSize) {
+                function createGrid(gridSize, tileSize, level) {
                     var div = document.getElementById("body");
 
                     while (div.hasChildNodes()) {
@@ -48,26 +51,19 @@ angular.module('myApp.mainPlace', [])
                                 continue;
                             }
 
-                            var _tile = tile.createTile(5, tileSize, tileSize);
+                            var _tile = tile.createTile(level, tileSize, tileSize);
                             tiles.push(_tile);
-                            _tile.onclick = tileClick;
+                            _tile.onclick = $scope.tile2;
                             column.appendChild(_tile);
                         }
                     }
 
-                    $scope.centerTile = tiles[Math.floor(Math.random() * tiles.length)];
-                    $scope.centerTile = tile.copyTile($scope.centerTile);
+                    $rootScope.centerTile = tiles[Math.floor(Math.random() * tiles.length)];
+                    $rootScope.centerTile = tile.copyTile($rootScope.centerTile);
 
-                    centerCell.appendChild($scope.centerTile);
-                }
+                    centerCell.appendChild($rootScope.centerTile);
 
-                function tileClick() {
-                    if ($scope.centerTile.id == this.id)
-                        alert("Won");
-                    else
-                        alert("Lost");
-
-                    createGrid(9, 64);
+                    $rootScope.createGrid = createGrid;
                 }
 
                 function changeLevel(level) {
@@ -79,6 +75,12 @@ angular.module('myApp.mainPlace', [])
                         tile.setLevel(canvas, level);
                     }
                 }
+
+                $scope.$watch('size', function (newValue, oldValue) {
+                    if (newValue !== oldValue) {
+                        createGrid(64);
+                    }
+                });
             }
         }
     });
