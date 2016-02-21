@@ -2,6 +2,9 @@
 
 angular.module('myApp.homeController', [])
     .controller('homeController', function ($scope, $rootScope) {
+        setTimeout(function(){
+            document.getElementById('s-screen').style.display = "none";
+        }, 1000*6);
 
 
         $scope.config = {
