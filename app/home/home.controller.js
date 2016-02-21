@@ -4,7 +4,7 @@ angular.module('myApp.homeController', [])
     .controller('homeController', function ($scope, $rootScope) {
         setTimeout(function(){
             document.getElementById('s-screen').style.display = "none";
-            //document.getElementById('history').style.display = "block";
+            document.getElementById('history').style.display = "block";
             $rootScope.terminal();
         }, 1000*4);
 
@@ -85,12 +85,23 @@ angular.module('myApp.homeController', [])
                      break;
                  case $scope.config.level4.tilesCount:
                      $scope.minFragments = $scope.config.level4.tilesCount;
-                     $scope.currentSize = $scope.config.level4.gridSize;
+
+                     if (screen.height > 1000)
+                         $scope.currentSize = $scope.config.level4.gridSize;
+                     else
+                         $scope.currentSize = 9;
+
                      $scope.currentLevel++;
                      break;
                  case $scope.config.level5.tilesCount:
                      $scope.minFragments = $scope.config.level5.tilesCount;
-                     $scope.currentSize = $scope.config.level5.gridSize;
+
+
+                     if (screen.height > 1000)
+                         $scope.currentSize = $scope.config.level5.gridSize;
+                     else
+                         $scope.currentSize = 9;
+
                      $scope.currentLevel++;
                      break;
                  case $scope.config.tilesCount:
