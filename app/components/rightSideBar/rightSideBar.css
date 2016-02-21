@@ -5,16 +5,17 @@
     -ms-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     filter: grayscale(100%);
+    z-index: -10;
 }
 .colorDNA {
     height: 50%;
+    z-index: 10;
 }
 .dnaBackground {
     width: 100%;
     top: 0px;
     background-repeat: no-repeat;
     background-position-x: 60px;
-    z-index: -10;
     background-size: 18%;
     position: absolute;
 
