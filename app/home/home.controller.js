@@ -2,6 +2,8 @@
 
 angular.module('myApp.homeController', [])
     .controller('homeController', function ($scope, $rootScope) {
+
+
         $scope.config = {
             tilesCount: 80,
             level1: {
@@ -24,22 +26,24 @@ angular.module('myApp.homeController', [])
                 tilesCount: 30,
                 gridSize: 11
             }
-        }
+        };
 
         $scope.currentSize = 7;
         $scope.currentLevel = 1;
 
-        $scope.foundTiles = 0;
+        $rootScope.foundTiles = 0;
 
          $scope.tileClick = function() {
              if ($rootScope.centerTile.id == this.id) {
-                 $scope.foundTiles++;
+                 $rootScope.foundTiles++;
                  checkState();
              }
-             else if ($scope.foundTiles >= 0)
-                 $scope.foundTiles--;
+             else if ($rootScope.foundTiles > 0)
+                 $rootScope.foundTiles--;
 
-             var fillPercent = ($scope.foundTiles * 100 / $scope.config.tilesCount) + '%';
+             document.getElementById('result_id').innerText = $rootScope.foundTiles;
+
+             var fillPercent = ($rootScope.foundTiles * 100 / $scope.config.tilesCount) + '%';
              if (fillPercent > 100)
                  fillPercent = 100;
 
@@ -50,7 +54,7 @@ angular.module('myApp.homeController', [])
 
          function checkState()
          {
-             switch ($scope.foundTiles) {
+             switch ($rootScope.foundTiles) {
                  case $scope.config.level1.tilesCount:
                      $scope.currentSize = $scope.config.level1.gridSize;
                      $scope.currentLevel++;
