@@ -12,17 +12,19 @@ angular.module('myApp.matrix', [])
                 angular.element(document).ready(function () {
                     var matrix_size = $scope.size;
 
-                    var buildItem = function (j, i, el) {
-                        $(document.createElement("div"))
-                            .addClass("cellWrapper")
-                            .css("left", parseInt((j - 1) * 70, 10) + "px")
-                            .css("top", parseInt((i - 1) * 70, 10) + "px")
-                            .width(70).height(70)
-                            .data("row", i).data("col", j)
-                            .appendTo("#grid")
-                            .on("click", cellClick)
-                            .on("mouseenter", {isMatrix: false}, cellMouseEnter)
-                            .on("mouseleave", cellMouseLeave);
+                    var buildItem = function (j, i, el, mainItem) {
+                        if (!mainItem) {
+                            $(document.createElement("div"))
+                                .addClass("cellWrapper")
+                                .css("left", parseInt((j - 1) * 70, 10) + "px")
+                                .css("top", parseInt((i - 1) * 70, 10) + "px")
+                                .width(70).height(70)
+                                .data("row", i).data("col", j)
+                                .appendTo("#grid")
+                                .on("click", cellClick)
+                                .on("mouseenter", {isMatrix: false}, cellMouseEnter)
+                                .on("mouseleave", cellMouseLeave);
+                        }
 
                         $(document.createElement("div"))
                             .addClass("cell cellUnselected")
@@ -31,6 +33,7 @@ angular.module('myApp.matrix', [])
                             .html(el)
                             .appendTo("#grid");
                     };
+
                     var rand = null;
                     $scope.createGrid = function () {
                         var grid_matrix = $("#grid");
@@ -50,13 +53,12 @@ angular.module('myApp.matrix', [])
                                 var el = tile.createTile();
                                 titleArray.push(el);
 
-                                buildItem(j, i, el);
+                                buildItem(j, i, el, false);
                             }
                         }
 
                         rand = titleArray[Math.floor(Math.random() * titleArray.length)];
-
-                        buildItem(startEmpty + 1, startEmpty + 1, tile.copyTile(rand));
+                        buildItem(startEmpty + 1, startEmpty + 1, tile.copyTile(rand), true);
 
                         grid_matrix.height(70 * matrix_size);
                         grid_matrix.width(70 * matrix_size);
@@ -67,9 +69,9 @@ angular.module('myApp.matrix', [])
 
                         var id = cell[0].getElementsByTagName('canvas')[0].id;
                         if (id == rand.id)
-                            alert('good')
+                            alert('good');
                         else
-                            alert('bad')
+                            alert('bad');
                     }
 
                     function cellMouseEnter(e) {
