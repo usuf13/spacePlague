@@ -8,12 +8,12 @@ angular.module('myApp.historyMenu', [])
                 size: '=size'
             },
             templateUrl: '../app/components/historyMenu/historyMenu.html',
-            controller: function () {
+            controller: function ($rootScope) {
                 var $lines = $('.prompt p');
                 $lines.hide();
                 var lineContents = new Array();
 
-                var terminal = function() {
+                $rootScope.terminal = function () {
 
                     var skip = 0;
                     var typeLine = function(idx) {
@@ -22,12 +22,17 @@ angular.module('myApp.historyMenu', [])
                         var content = lineContents[idx];
                         if(typeof content == "undefined") {
                             $('.skip').hide();
+
+                            setTimeout(function () {
+                                document.getElementById('history').style.display = "none";
+                            }, 1000 * 5);
+
                             return;
                         }
                         var charIdx = 0;
 
                         var typeChar = function() {
-                            var rand = Math.round(Math.random() * 150) + 25;
+                            var rand = Math.round(Math.random() * 150);
 
                             setTimeout(function() {
                                 var char = content[charIdx++];
@@ -35,14 +40,13 @@ angular.module('myApp.historyMenu', [])
                                 if(typeof char !== "undefined")
                                     typeChar();
                                 else {
-                                    element.append('<br/><span class="output">' + element.text().slice(9, -1) + '</span>');
+                                    //element.append('<br/><span class="output">' + element.text().slice(9, -1) + '</span>');
                                     element.removeClass('active');
                                     typeLine(++idx);
                                 }
                             }, skip ? 0 : rand);
                         }
-                        content = 'echo "' + content + '"';
-                        element.append('~$ ').addClass('active');
+                        element.addClass('active');
                         typeChar();
                     }
 
@@ -53,8 +57,6 @@ angular.module('myApp.historyMenu', [])
 
                     typeLine();
                 }
-
-                terminal();
             }
         }
     });

@@ -12,8 +12,8 @@ angular.module('myApp.splashScreen', [])
                 c.height = window.innerHeight;
                 c.width = window.innerWidth;
 
-                var chinese = "SPACE PLAGUE";
-                chinese = chinese.split("");
+                var gameName = "SPACE PLAGUE";
+                gameName = gameName.split("");
 
                 var font_size = 10;
                 var columns = c.width / font_size;
@@ -30,7 +30,7 @@ angular.module('myApp.splashScreen', [])
                     ctx.font = font_size + "px arial";
 
                     for (var i = 0; i < drops.length; i++) {
-                        var text = chinese[Math.floor(Math.random() * chinese.length)];
+                        var text = gameName[Math.floor(Math.random() * gameName.length)];
                         ctx.fillText(text, i * font_size, drops[i] * font_size);
 
                         if (drops[i] * font_size > c.height && Math.random() > 0.975)

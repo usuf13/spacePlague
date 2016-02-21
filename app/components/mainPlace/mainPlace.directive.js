@@ -65,22 +65,6 @@ angular.module('myApp.mainPlace', [])
 
                     $rootScope.createGrid = createGrid;
                 }
-
-                function changeLevel(level) {
-                    var canvasArr = document.getElementsByTagName("canvas");
-
-                    for (var index = 0; index < canvasArr.length; index++) {
-                        var canvas = canvasArr[index];
-
-                        tile.setLevel(canvas, level);
-                    }
-                }
-
-                $scope.$watch('size', function (newValue, oldValue) {
-                    if (newValue !== oldValue) {
-                        createGrid(64);
-                    }
-                });
             }
         }
     });
