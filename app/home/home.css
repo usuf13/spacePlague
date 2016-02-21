@@ -26,3 +26,8 @@
     height: 100px;
     background-color: green
 }
+
+.main_place {
+    display: table-row;
+    height: 100%;
+}
