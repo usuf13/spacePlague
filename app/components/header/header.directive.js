@@ -18,6 +18,7 @@ angular.module('myApp.header', [])
 
                     $scope.peopleCount += Math.floor(Math.random() * (200 - 20 + 1)) + 20;
                     document.getElementById('death_id').innerText = $scope.peopleCount;
+                    document.getElementById('death_id').textContent = $scope.peopleCount;
                 }, 1000);
             }
         }

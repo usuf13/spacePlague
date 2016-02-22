@@ -41,8 +41,8 @@ angular.module('myApp.homeController', [])
 
          $scope.tileClick = function() {
              if ($rootScope.centerTile.id == this.id) {
-                 var audio = new Audio('./audio/good.wav');
-                 audio.play();
+                  var audio = new Audio('./audio/good.wav');
+                     audio.play();
 
                  $rootScope.foundTiles++;
                  checkState();
@@ -56,6 +56,7 @@ angular.module('myApp.homeController', [])
              }
 
              document.getElementById('result_id').innerText = $rootScope.foundTiles;
+             document.getElementById('result_id').textContent = $rootScope.foundTiles;
 
              var fillPercent = ($rootScope.foundTiles * 100 / $scope.config.tilesCount) + '%';
              if (fillPercent > 100)
@@ -66,6 +67,8 @@ angular.module('myApp.homeController', [])
             $rootScope.createGrid($scope.currentSize, 64, $scope.currentLevel);
          }
 
+         $scope.won = false;
+        
          function checkState()
          {
              switch ($rootScope.foundTiles) {
@@ -96,7 +99,6 @@ angular.module('myApp.homeController', [])
                  case $scope.config.level5.tilesCount:
                      $scope.minFragments = $scope.config.level5.tilesCount;
 
-
                      if (screen.height > 1000)
                          $scope.currentSize = $scope.config.level5.gridSize;
                      else
@@ -105,10 +107,17 @@ angular.module('myApp.homeController', [])
                      $scope.currentLevel++;
                      break;
                  case $scope.config.tilesCount:
-                     var audio = new Audio('./audio/win.wav');
+                     if ($scope.won)
+                         return;
+
+                     $scope.minFragments = $scope.config.tilesCount;
+
+                     $scope.won = true;
+
+                     var audio = new Audio('./audio/win.mp4');
                      audio.play();
 
-                     alert("Win");
+                     document.getElementById('win').style.display = "block";
                      break;
              }
          }
