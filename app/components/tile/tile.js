@@ -91,8 +91,10 @@
         canvas.setAttribute("id", sourceCanvas.getAttribute('id'));
         canvas.setAttribute("width", sourceCanvas.getAttribute('width'));
         canvas.setAttribute("height", sourceCanvas.getAttribute('height'));
-        canvas.setAttribute("class", sourceCanvas.getAttribute('class'));
-        canvas.setAttribute("style", sourceCanvas.getAttribute('style'));
+        canvas.setAttribute("class", "tile");
+        canvas.setAttribute("style", "");
+        //canvas.setAttribute("class", sourceCanvas.getAttribute('class'));
+        //canvas.setAttribute("style", sourceCanvas.getAttribute('style'));
 
         var destCtx = canvas.getContext('2d');
         destCtx.drawImage(sourceCanvas, 0, 0);
